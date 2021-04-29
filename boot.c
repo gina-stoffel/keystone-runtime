@@ -171,5 +171,11 @@ eyrie_boot(uintptr_t dummy, // $a0 contains the return value from the SBI
 
   debug("eyrie boot finished. drop to the user land ...");
   /* booting all finished, droping to the user land */
+
+  /* for now, we abuse the random ecall to signal that
+   * the enclave finished booting the runtime
+   */
+  sbi_random();
+
   return;
 }
